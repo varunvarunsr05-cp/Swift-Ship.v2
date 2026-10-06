@@ -42,27 +42,27 @@ const run = async () => {
     Gallery.deleteMany({}),
   ]);
 
-  const admin = await User.create({
-    name: 'SwiftShip Admin',
-    email: 'admin@swiftship.com',
-    phone: '+91 9876543210',
-    password: 'Admin@123',
-    role: 'admin',
-    city: 'Bengaluru',
-    state: 'Karnataka',
-  });
+  // const admin = await User.create({
+  //   name: 'SwiftShip Admin',
+  //   email: 'admin@swiftship.com',
+  //   phone: '+91 9876543210',
+  //   password: 'Admin@123',
+  //   role: 'admin',
+  //   city: 'Bengaluru',
+  //   state: 'Karnataka',
+  // });
 
-  const customer = await User.create({
-    name: 'Varun SR',
-    email: 'varun@example.com',
-    phone: '+91 9876500000',
-    password: 'Customer@123',
-    role: 'customer',
-    address: '123 Main St',
-    city: 'Kochi',
-    state: 'Kerala',
-    pincode: '682001',
-  });
+  // const customer = await User.create({
+  //   name: 'Varun SR',
+  //   email: 'varun@example.com',
+  //   phone: '+91 9876500000',
+  //   password: 'Customer@123',
+  //   role: 'customer',
+  //   address: '123 Main St',
+  //   city: 'Kochi',
+  //   state: 'Kerala',
+  //   pincode: '682001',
+  // });
 
   const createdServices = await Service.insertMany(services);
 
