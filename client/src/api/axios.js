@@ -1,7 +1,9 @@
+require('dotenv').config();
 import axios from 'axios';
 
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.API_URL,
 });
 
 // const token = localStorage.getItem('swiftship_token');
