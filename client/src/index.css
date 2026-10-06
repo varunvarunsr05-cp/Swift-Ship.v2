@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-text-primary bg-white antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-navy text-white hover:bg-blue shadow-sm;
+  }
+  .btn-accent {
+    @apply btn bg-orange text-white hover:bg-orange/90 shadow-sm;
+  }
+  .btn-outline {
+    @apply btn border border-navy text-navy bg-white hover:bg-light-blue-bg;
+  }
+  .btn-ghost {
+    @apply btn text-text-secondary hover:bg-off-white;
+  }
+  .btn-sm {
+    @apply px-3.5 py-2 text-xs;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:border-blue focus:outline-none focus:ring-2 focus:ring-blue/20 transition;
+  }
+
+  .card {
+    @apply rounded-2xl border border-border bg-white shadow-card;
+  }
+
+  .section {
+    @apply py-14 sm:py-20;
+  }
+
+  .section-label {
+    @apply text-xs font-bold uppercase tracking-wider text-orange;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+}
