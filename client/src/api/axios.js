@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "https://swift-ship-v2.onrender.com/api"
 });
 
 // const token = localStorage.getItem('swiftship_token');
