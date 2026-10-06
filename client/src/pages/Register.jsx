@@ -113,7 +113,7 @@ export default function Register() {
               </p>
             </div>
 
-            <label className="flex items-start gap-2.5 text-xs text-text-secondary">
+            <label className="flex items-start gap-1.5 text-xs text-text-secondary">
               <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 h-4 w-4 rounded border-border text-navy focus:ring-blue" />
               I agree to the <span className="font-semibold text-blue">Terms of Service</span> and <span className="font-semibold text-blue">Privacy Policy</span>
             </label>

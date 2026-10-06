@@ -51,7 +51,7 @@ export default function Services() {
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <div className="relative rounded-3xl bg-gradient-to-br
-         p-10 min-h-[400px] bg-center bg-cover"
+         p-10 min-h-[330px] bg-center bg-cover"
         style={{backgroundImage:`url(${business})`}}>
           {/* <Truck size={120} className="mx-auto text-white/90" strokeWidth={1.2} /> */}
           {/* <img width='460px' src={business} alt="" className='rounded-md' /> */}
@@ -90,9 +90,9 @@ export default function Services() {
           </div>
           <div className="mt-10 grid grid-cols-2 gap-6 rounded-2xl bg-light-blue-bg p-6 sm:grid-cols-4">
             {trust.map((t) => (
-              <div key={t.title} className="flex items-center gap-3">
+              <div key={t.title} className="flex items-center gap-2">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-blue shadow-card">
-                  <t.icon size={18} />
+                  <t.icon size={15} />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-text-primary">{t.title}</p>

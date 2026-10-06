@@ -67,7 +67,7 @@ export default function Track() {
 
   return (
     <div>
-      <section className="bg-center  bg-cover lg:min-h-[650px]"
+      <section className="bg-center bg-cover lg:min-h-[650px]"
       style={{backgroundImage:`url(${express})`}}>
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
 

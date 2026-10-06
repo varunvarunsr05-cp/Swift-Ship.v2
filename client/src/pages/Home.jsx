@@ -8,8 +8,8 @@ import {
 import api from '../api/axios';
 import ServiceCard from '../components/ServiceCard';
 import { Loading } from '../components/States';
-import hero from '../public/hero-bg.png'
-import domestic from '../public/domestic.png'
+import hero from '../public/hero-bg.png';
+import domestic from '../public/domestic.png';
 
 const features = [
   { icon: ShieldCheck, title: 'Secure & Reliable', desc: 'Your packages are in safe hands' },
@@ -100,11 +100,11 @@ export default function Home() {
 
       {/* Features strip */}
       <section className="border-y border-border bg-border">
-        <div className="max-w-screen-2xl mx-8 grid grid-cols-2 gap-6 py-8 sm:grid-cols-4">
+        <div className="max-w-screen-2xl mx-5 grid grid-cols-2 gap-6 py-8 sm:grid-cols-4">
           {features.map((f) => (
             <div key={f.title} className="flex items-center gap-3">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-light-blue-bg text-blue">
-                <f.icon size={20} />
+                <f.icon size={15} />
               </div>
               <div>
                 <p className="text-sm font-bold text-text-primary">{f.title}</p>
@@ -147,7 +147,7 @@ export default function Home() {
           <h3 className="mt-3 lg:max-w-md text-2xl font-extrabold text-white sm:text-3xl">Delivering Across India and Beyond</h3>
           <p className="mt-3 lg:max-w-md text-sm text-white/70">From local neighborhoods to global destinations — we keep the world moving.</p>
           <Link to="/shipment-request" className="btn-accent mt-6 inline-flex">Start Shipping <ArrowRight className='lg:max-w-md' size={16} /></Link>
-          <div className="  absolute -right-[-15px] -top-[-15px] bg-center bg-cover text-white/10 h-[370px]  lg:w-[350px] xl:min-w-[600px] rounded-lg" 
+          <div className="  absolute -right-[-25px] -top-[-25px] bg-center bg-cover text-white/10 h-[340px]  lg:w-[350px] xl:min-w-[600px] rounded-lg" 
           style={{backgroundImage:`url(${domestic})`}}>
           {/* <img width='450px' src={domestic} alt="domestic-del-img" className='rounded-md mb-4' /> */}
           </div>

@@ -29,7 +29,7 @@ export default function Contact() {
     <div>
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <section className="bg-navy min-h-[550px]">
-          <div className="max-w-screen-2xl mx-8 py-14">
+          <div className="max-w-screen-2xl mx-8 py-10">
             <div className='flex justify-between max-w-screen-2xl  grid grid-cols-1 gap-8 py-14 lg:grid-cols-2 lg:items-center'>
               <div>
                 <p className="text-xs font-bold uppercase tracking-wider text-orange">Contact Us</p>
@@ -41,13 +41,13 @@ export default function Contact() {
 
               </div>
               <div className="flex justify-center">
-                <img  alt="domestic-del-img" src={hero}  className='rounded-md w-[1000px] h-[290px]' />
+                <img  alt="domestic-del-img" src={hero}  className='rounded-md w-[1000px] h-[230px]' />
               </div>
               {/* <img  src={hero} alt="domestic-del-img" className='rounded-md mb-4 w-[200px]' /> */}
             </div>
             <div className="mt-8 grid grid-cols-1 gap-4 rounded-2xl bg-white/10 p-5 sm:grid-cols-2 lg:grid-cols-4">
               {contactMethods.map((c) => (
-                <div key={c.title} className="flex ml-10 items-center gap-4">
+                <div key={c.title} className="flex ml-7 items-center gap-4">
                   <c.icon size={20} className="shrink-0 text-orange" />
                   <div>
                     <p className="text-xs font-bold text-white">{c.title}</p>

@@ -56,7 +56,7 @@ export default function About() {
       </section>
 
       <section className="section">
-        <div className="max-w-screen-xl ml-16 grid grid-cols-1 gap-10 lg:grid-cols-3">
+        <div className="max-w-screen-xl mx-8 grid grid-cols-1 gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <p className="section-label">Our Story</p>
             <h2 className="mt-2 text-2xl font-extrabold text-text-primary sm:text-3xl">
