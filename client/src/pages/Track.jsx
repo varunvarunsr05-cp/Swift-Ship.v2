@@ -65,19 +65,45 @@ export default function Track() {
     doTrack(input);
   };
 
-  return (
-    <div>
-      <section className="bg-center bg-cover lg:min-h-[650px]"
-      style={{backgroundImage:`url(${express})`}}>
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+return (
+  <div>
+    <section
+      className="relative overflow-hidden bg-cover bg-center lg:min-h-[650px]"
+      style={{ backgroundImage: `url(${express})` }}
+    >
+      {/* Professional contrast overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#061A3A]/90 via-[#061A3A]/60 to-[#061A3A]/10" />
 
-          <div className="max-w-screen-2xl mx-8 grid grid-cols-1 gap-8 py-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="section-label">Track Your Shipment</p>
-              <h1 className="mt-2 text-3xl font-extrabold text-text-primary sm:text-4xl">
-                Know Exactly Where <span className="text-orange">Your Package</span> Is
-              </h1>
-              <p className="mt-3 max-w-md text-sm text-text-secondary">Enter your tracking ID to get real-time updates on your shipment. Fast. Accurate. Always.</p>
+      {/* Subtle overall darkening */}
+      <div className="absolute inset-0 bg-black/10" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative z-10"
+      >
+        <div className="mx-8 grid max-w-screen-2xl grid-cols-1 gap-8 py-12 lg:grid-cols-2 lg:items-center">
+          
+          <div>
+            <p className="section-label font-bold uppercase tracking-wider text-orange">
+              Track Your Shipment
+            </p>
+
+            <h1 className="mt-2 max-w-2xl text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+              Know Exactly Where{' '}
+              <span className="text-orange">
+                Your Package
+              </span>{' '}
+              Is
+            </h1>
+
+            <p className="mt-4 max-w-md text-sm leading-7 text-white/85 sm:text-base">
+              Enter your tracking ID to get real-time updates on your
+              shipment. Fast. Accurate. Always.
+            </p>
+
+            {/* Your existing tracking form/card goes here */}
               <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-2 rounded-2xl border border-border bg-white p-2 shadow-panel sm:flex-row">
                 <div className="relative flex-1">
                   <Package size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />

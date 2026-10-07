@@ -41,7 +41,7 @@ export default function Contact() {
 
               </div>
               <div className="flex justify-center">
-                <img  alt="domestic-del-img" src={hero}  className='rounded-md w-[1000px] h-[230px]' />
+                <img  alt="domestic-del-img" src={hero}  className='rounded-md w-[700px] h-[330px]' />
               </div>
               {/* <img  src={hero} alt="domestic-del-img" className='rounded-md mb-4 w-[200px]' /> */}
             </div>
