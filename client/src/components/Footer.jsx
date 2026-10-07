@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, Youtube, Mail, ArrowRight } from 'lucide-react';
-import Logo from './Logo';
+// import Logo from './Logo';
+import WhiteLogo from './WhiteLogo';
+
 
 export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="max-w-screen-2xl mx-8 grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo light />
+          <WhiteLogo light />
           <p className="mt-4 max-w-xs text-sm text-white/70">
             Reliable courier and logistics solutions for individuals and businesses. Because every delivery moves a brighter tomorrow.
           </p>

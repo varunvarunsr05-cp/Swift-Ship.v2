@@ -75,84 +75,87 @@ export default function AdminServices() {
         <StatCard icon={PauseCircle} value={inactive} label="Inactive Service" color="orange" />
         <StatCard icon={Clock3} value={review} label="Under Review" color="red" />
       </div>
-
-      <div className="mb-4 flex flex-col gap-3 sm:flex-row">
-        <div className="relative flex-1">
-          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
-          <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by service name or description..." className="input-field pl-10" />
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <div className="lg:col-span-2">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row">
+          <div className="relative flex-1">
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted" />
+            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by service name or description..." className="input-field pl-10" />
+          </div>
+          <button className="btn-outline"><Filter size={15} /> Filter</button>
         </div>
-        <button className="btn-outline"><Filter size={15} /> Filter</button>
-      </div>
 
-      {loading && <Loading />}
-      {!loading && error && <ErrorState description={error} />}
-      {!loading && !error && services.length === 0 && <EmptyState title="No services yet" />}
-      {!loading && !error && services.length > 0 && (
-        <div className="card overflow-x-auto">
-          <table className="w-full min-w-[720px] text-sm">
-            <thead>
-              <tr className="border-b border-border bg-off-white text-left text-xs font-bold uppercase text-text-muted">
-                <th className="px-4 py-3">#</th><th className="px-4 py-3">Service Name</th><th className="px-4 py-3">Description</th><th className="px-4 py-3">Delivery Time</th><th className="px-4 py-3">Status</th><th className="px-4 py-3">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {services.map((s, i) => {
-                const Icon = iconMap[s.icon] || Package;
-                return (
-                  <tr key={s._id} className="border-b border-border last:border-0 hover:bg-off-white/60">
-                    <td className="px-4 py-3 text-text-muted">{i + 1}</td>
-                    <td className="px-4 py-3"><span className="flex items-center gap-2 font-semibold text-blue"><Icon size={15} /> {s.name}</span></td>
-                    <td className="max-w-xs px-4 py-3 text-text-secondary">{s.description}</td>
-                    <td className="px-4 py-3">{s.deliveryTime}</td>
-                    <td className="px-4 py-3"><StatusBadge status={s.status} /></td>
-                    <td className="px-4 py-3">
-                      <div className="flex gap-1.5">
-                        <button onClick={() => openEdit(s)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><Pencil size={14} /></button>
-                        <button onClick={() => handleDelete(s._id)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-border text-error hover:bg-red-50"><Trash2 size={14} /></button>
-                        <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><MoreHorizontal size={14} /></button>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {panelOpen && (
-        <SlideOver title={editing ? 'Edit Service' : 'Add New Service'} onClose={() => setPanelOpen(false)}>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {formError && <ErrorBanner message={formError} />}
-            <Field label="Service Name" required><Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required /></Field>
-            <Field label="Description" required><Textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required /></Field>
-            <Field label="Delivery Time" required><Input placeholder="e.g. 3 - 5 business days" value={form.deliveryTime} onChange={(e) => setForm({ ...form, deliveryTime: e.target.value })} required /></Field>
-            <Field label="Service Icon">
-              <div className="flex flex-wrap gap-2">
-                {icons.map((ic) => {
-                  const Icon = iconMap[ic];
+        {loading && <Loading />}
+        {!loading && error && <ErrorState description={error} />}
+        {!loading && !error && services.length === 0 && <EmptyState title="No services yet" />}
+        {!loading && !error && services.length > 0 && (
+          <div className="card overflow-x-auto">
+            <table className="w-full min-w-[720px] text-sm">
+              <thead>
+                <tr className="border-b border-border bg-off-white text-left text-xs font-bold uppercase text-text-muted">
+                  <th className="px-4 py-3">#</th><th className="px-4 py-3">Service Name</th><th className="px-4 py-3">Description</th><th className="px-4 py-3">Delivery Time</th><th className="px-4 py-3">Status</th><th className="px-4 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {services.map((s, i) => {
+                  const Icon = iconMap[s.icon] || Package;
                   return (
-                    <button type="button" key={ic} onClick={() => setForm({ ...form, icon: ic })} className={`flex h-10 w-10 items-center justify-center rounded-xl border ${form.icon === ic ? 'border-navy bg-light-blue-bg text-navy' : 'border-border text-text-muted'}`}>
-                      <Icon size={17} />
-                    </button>
+                    <tr key={s._id} className="border-b border-border last:border-0 hover:bg-off-white/60">
+                      <td className="px-4 py-3 text-text-muted">{i + 1}</td>
+                      <td className="px-4 py-3"><span className="flex items-center gap-2 font-semibold text-blue"><Icon size={15} /> {s.name}</span></td>
+                      <td className="max-w-xs px-4 py-3 text-text-secondary">{s.description}</td>
+                      <td className="px-4 py-3">{s.deliveryTime}</td>
+                      <td className="px-4 py-3"><StatusBadge status={s.status} /></td>
+                      <td className="px-4 py-3">
+                        <div className="flex gap-1.5">
+                          <button onClick={() => openEdit(s)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><Pencil size={14} /></button>
+                          <button onClick={() => handleDelete(s._id)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-border text-error hover:bg-red-50"><Trash2 size={14} /></button>
+                          <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><MoreHorizontal size={14} /></button>
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {panelOpen && (
+          <SlideOver title={editing ? 'Edit Service' : 'Add New Service'} onClose={() => setPanelOpen(false)}>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {formError && <ErrorBanner message={formError} />}
+              <Field label="Service Name" required><Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required /></Field>
+              <Field label="Description" required><Textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required /></Field>
+              <Field label="Delivery Time" required><Input placeholder="e.g. 3 - 5 business days" value={form.deliveryTime} onChange={(e) => setForm({ ...form, deliveryTime: e.target.value })} required /></Field>
+              <Field label="Service Icon">
+                <div className="flex flex-wrap gap-2">
+                  {icons.map((ic) => {
+                    const Icon = iconMap[ic];
+                    return (
+                      <button type="button" key={ic} onClick={() => setForm({ ...form, icon: ic })} className={`flex h-10 w-10 items-center justify-center rounded-xl border ${form.icon === ic ? 'border-navy bg-light-blue-bg text-navy' : 'border-border text-text-muted'}`}>
+                        <Icon size={17} />
+                      </button>
+                    );
+                  })}
+                </div>
+              </Field>
+              <Field label="Status">
+                <Select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="under_review">Under Review</option>
+                </Select>
+              </Field>
+              <div className="flex gap-3 pt-2">
+                <button type="button" onClick={() => setPanelOpen(false)} className="btn-outline flex-1 justify-center">Cancel</button>
+                <button type="submit" disabled={saving} className="btn-primary flex-1 justify-center">{saving ? 'Saving...' : 'Save Service'}</button>
               </div>
-            </Field>
-            <Field label="Status">
-              <Select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                <option value="under_review">Under Review</option>
-              </Select>
-            </Field>
-            <div className="flex gap-3 pt-2">
-              <button type="button" onClick={() => setPanelOpen(false)} className="btn-outline flex-1 justify-center">Cancel</button>
-              <button type="submit" disabled={saving} className="btn-primary flex-1 justify-center">{saving ? 'Saving...' : 'Save Service'}</button>
-            </div>
-          </form>
-        </SlideOver>
-      )}
+            </form>
+          </SlideOver>
+        )}
+      </div>
+      </div>
     </AdminLayout>
   );
 }

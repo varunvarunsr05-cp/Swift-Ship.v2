@@ -113,7 +113,7 @@ export default function AdminLogin() {
             <div className="flex items-center gap-3 text-xs text-text-muted"><span className="h-px flex-1 bg-border" /> or <span className="h-px flex-1 bg-border" /></div>
             <button type="button" className="btn-outline w-full justify-center"><ShieldCheck size={16} /> Login with SSO</button>
             <p className="text-center text-[11px] text-text-muted">Restricted access. Authorized personnel only.</p>
-            <p className="rounded-lg bg-light-blue-bg p-2.5 text-center text-[11px] text-text-secondary">Demo: admin@swiftship.com / Admin@123</p>
+            {/* <p className="rounded-lg bg-light-blue-bg p-2.5 text-center text-[11px] text-text-secondary">Demo: admin@swiftship.com / Admin@123</p> */}
           </form>
         </div>
       </div>

@@ -5,7 +5,7 @@ import React from "react";
  * tail, crossed by a single orange diagonal blade.
  * Colors match the brand palette exactly: navy #0B2A6F, orange #FF6B00.
  */
-export default function SwiftShipMark({ className = "w-40 h-auto" }) {
+export default function WhiteLogo({ className = "w-35 h-auto" }) {
     return (
     <div className={`flex items-center ${className}`}>
         <svg
@@ -26,7 +26,7 @@ export default function SwiftShipMark({ className = "w-40 h-auto" }) {
            L946,238
            Q952,230 940,230
            Z"
-                fill="#0B2A6F"
+                fill="#f5f8ff"
             />
 
             {/* Band 2 — middle */}
@@ -38,7 +38,7 @@ export default function SwiftShipMark({ className = "w-40 h-auto" }) {
            L852,448
            Q858,440 846,440
            Z"
-                fill="#0B2A6F"
+                fill="#f5f8ff"
             />
 
             {/* Band 3 + tapering tail */}
@@ -59,7 +59,7 @@ export default function SwiftShipMark({ className = "w-40 h-auto" }) {
            Q486,978 512,932
            Q560,850 592,796
            Z"
-                fill="#0B2A6F"
+                fill="#f5f8ff"
                 fillRule="nonzero"
             />
 
@@ -75,12 +75,12 @@ export default function SwiftShipMark({ className = "w-40 h-auto" }) {
         </svg>
 
      {/* Wordmark */}
-      <div className="ml-2 flex flex-col leading-none">
-        <span className="font-['Inter'] text-[24px] font-bold tracking-[-0.5px] text-[#0B2A6F]">
+      <div className="ml-1 flex flex-col leading-none">
+        <span className="font-['Inter'] text-[22px] font-bold tracking-[-0.5px] text-[#f5f8ff]">
           SwiftShip
         </span>
 
-        <span className="mt-[3px] font-['Inter'] text-[6px] font-semibold tracking-[0.2px] text-[#526581]">
+        <span className="mt-[3px] font-['Inter'] text-[7px] font-semibold tracking-[0.2px] text-[#f5f8ff]">
           Delivering a Smarter Tomorrow
         </span>
       </div>

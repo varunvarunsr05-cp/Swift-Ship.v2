@@ -5,7 +5,8 @@ import {
   Search, Bell, ChevronDown, LogOut, Menu, X,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import Logo from '../Logo';
+import WhiteLogo from '../WhiteLogo';
+
 
 const navItems = [
   { to: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -28,11 +29,11 @@ export default function AdminLayout({ children, title, subtitle, action }) {
   };
 
   return (
-    <div className="flex min-h-screen bg-off-white">
+    <div className="flex min-w-screen bg-off-white">
       {/* Sidebar */}
       <aside className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-navy px-4 py-6 transition-transform lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex items-center justify-between px-1">
-          <Logo light size="sm" />
+          <WhiteLogo light size="sm" />
           <button className="text-white lg:hidden" onClick={() => setSidebarOpen(false)}><X size={20} /></button>
         </div>
 

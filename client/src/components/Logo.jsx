@@ -5,12 +5,12 @@ import React from "react";
  * tail, crossed by a single orange diagonal blade.
  * Colors match the brand palette exactly: navy #0B2A6F, orange #FF6B00.
  */
-export default function SwiftShipMark({ className = "w-40 h-auto" }) {
+export default function SwiftShipMark({ className = "w-35 h-auto" }) {
     return (
     <div className={`flex items-center ${className}`}>
         <svg
-            width="48"
-            height="48"
+            width="45"
+            height="44"
             viewBox="0 0 1300 1150"
             xmlns="http://www.w3.org/2000/svg"
             className={className}
@@ -75,12 +75,12 @@ export default function SwiftShipMark({ className = "w-40 h-auto" }) {
         </svg>
 
      {/* Wordmark */}
-      <div className="ml-2 flex flex-col leading-none">
-        <span className="font-['Inter'] text-[24px] font-bold tracking-[-0.5px] text-[#0B2A6F]">
+      <div className="ml-1 flex flex-col leading-none">
+        <span className="font-['Inter'] text-[22px] font-bold tracking-[-0.5px] text-[#0B2A6F]">
           SwiftShip
         </span>
 
-        <span className="mt-[3px] font-['Inter'] text-[6px] font-semibold tracking-[0.2px] text-[#526581]">
+        <span className="mt-[3px] font-['Inter'] text-[7px] font-semibold tracking-[0.2px] text-[#526581]">
           Delivering a Smarter Tomorrow
         </span>
       </div>
