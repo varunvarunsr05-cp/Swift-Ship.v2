@@ -24,6 +24,7 @@ export default function AdminContent() {
   const [form, setForm] = useState({ title: '', link: '', displayOrder: 1, status: 'active' });
   const [formError, setFormError] = useState('');
   const [saving, setSaving] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
 
   const fetchItems = () => {
     setLoading(true);
@@ -58,9 +59,9 @@ export default function AdminContent() {
     } finally {
       setSaving(false);
     }
-  };
-
-   const handleUpdate = async (e) => {
+  }; 
+  
+  const handleUpdate = async (e) => {
     e.preventDefault();
     setFormError('');
     setSaving(true);
@@ -161,9 +162,8 @@ export default function AdminContent() {
                   className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"
                 >
                   <Pencil size={14} />
-                  </button>
-
-                  <button
+                </button>
+                <button
                   onClick={() => handleDelete(item._id)}
                   title="Delete content"
                   className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-red-500 hover:bg-red-50"
@@ -183,8 +183,16 @@ export default function AdminContent() {
       </div>
 
       {panelOpen && (
-        <SlideOver title="Upload / Edit Banner" onClose={() => setPanelOpen(false)}>
-          <form onSubmit={handleUpload} className="space-y-4">
+        <SlideOver
+          title={editingItem ? 'Edit Content' : 'Upload / Edit Banner'}
+          onClose={() => {
+            setPanelOpen(false);
+            setEditingItem(null);
+            setFile(null);
+            setFormError('');
+          }}
+        >
+          <form onSubmit={editingItem ? handleUpdate : handleUpload} className="space-y-4">
             {formError && <ErrorBanner message={formError} />}
             <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-8 text-center hover:bg-off-white">
               <UploadCloud size={26} className="text-blue" />
@@ -202,7 +210,15 @@ export default function AdminContent() {
                 <option value="inactive">Inactive</option>
               </Select>
             </Field>
-            <button type="submit" disabled={saving} className="btn-primary w-full justify-center">{saving ? 'Uploading...' : 'Upload Banner'}</button>
+            <button
+              type="submit"
+              disabled={saving}
+              className="btn-primary w-full justify-center"
+            >
+              {saving
+                ? editingItem ? 'Updating...' : 'Uploading...'
+                : editingItem ? 'Save Changes' : 'Upload Banner'}
+            </button>
           </form>
         </SlideOver>
       )}
