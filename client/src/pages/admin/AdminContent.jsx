@@ -94,6 +94,16 @@ export default function AdminContent() {
     }
   };
 
+  const handleDelete = async (id) => {
+  if (!window.confirm('Are you sure you want to delete this content?')) return;
+
+  try {
+    await api.delete(`/gallery/${id}`);
+    fetchItems();
+  } catch (err) {
+    setError(err.response?.data?.message || 'Failed to delete content.');
+  }
+};
 
   const totalImages = items.length;
   const activeBanners = items.filter((i) => i.type === 'banner' && i.status === 'active').length;
@@ -134,7 +144,22 @@ export default function AdminContent() {
                 <p className="mt-1 text-xs text-text-muted">Updated on {new Date(item.updatedAt).toLocaleDateString()}</p>
               </div>
               <div className="flex gap-1.5">
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><Pencil size={14} /></button>
+                <button
+                  onClick={() => {
+                    setEditingItem(item);
+                    setForm({
+                      title: item.title || '',
+                      link: item.link || '',
+                      displayOrder: item.displayOrder ?? 1,
+                      status: item.status || 'active',
+                    });
+                    setFile(null);
+                    setFormError('');
+                    setPanelOpen(true);
+                  }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"
+                >
+                  <Pencil size={14} /></button>
                 <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><MoreHorizontal size={14} /></button>
               </div>
             </div>
