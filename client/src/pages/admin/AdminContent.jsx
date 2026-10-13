@@ -7,6 +7,7 @@ import { Loading, ErrorState, EmptyState, ErrorBanner } from '../../components/S
 import StatusBadge from '../../components/StatusBadge';
 import Input, { Field, Select } from '../../components/Input';
 import SlideOver from '../../components/admin/SlideOver';
+import { Trash2 } from 'lucide-react';
 
 const tabs = [
   { id: 'banner', label: 'Banners' },
@@ -159,8 +160,17 @@ export default function AdminContent() {
                   }}
                   className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"
                 >
-                  <Pencil size={14} /></button>
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><MoreHorizontal size={14} /></button>
+                  <Pencil size={14} />
+                  </button>
+
+                  <button
+                  onClick={() => handleDelete(item._id)}
+                  title="Delete content"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-red-500 hover:bg-red-50"
+                >
+                  <Trash2 size={14} />
+                </button>
+                {/* <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-text-secondary hover:bg-off-white"><MoreHorizontal size={14} /></button> */}
               </div>
             </div>
           ))}
