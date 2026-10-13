@@ -59,6 +59,42 @@ export default function AdminContent() {
     }
   };
 
+   const handleUpdate = async (e) => {
+    e.preventDefault();
+    setFormError('');
+    setSaving(true);
+
+    try {
+      const fd = new FormData();
+
+      fd.append('title', form.title);
+      fd.append('link', form.link);
+      fd.append('displayOrder', form.displayOrder);
+      fd.append('status', form.status);
+      fd.append('type', tab);
+
+      if (file) {
+        fd.append('image', file);
+      }
+
+      await api.put(`/gallery/${editingItem._id}`, fd, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      setPanelOpen(false);
+      setEditingItem(null);
+      setFile(null);
+      setForm({ title: '', link: '', displayOrder: 1, status: 'active' });
+
+      fetchItems();
+    } catch (err) {
+      setFormError(err.response?.data?.message || 'Update failed.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+
   const totalImages = items.length;
   const activeBanners = items.filter((i) => i.type === 'banner' && i.status === 'active').length;
 
